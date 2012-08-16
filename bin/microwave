@@ -17,12 +17,6 @@ source "$shome/bin/_treadstone"
 
 # entry point
 function main {
-  local uid_user="$(id -u)"
-  if [[ "$uid_user" == 0 ]]; then
-    logger_fatal "microwave cannot run as root"
-    exit 1
-  fi
-
   microwave_cook "$@"
 }
 
