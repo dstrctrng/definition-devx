@@ -6,7 +6,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 # update packages
 aptitude update
-aptitude upgrade -q -y
+aptitude safe-upgrade -q -y
 
 # install ruby
 aptitude install -y ruby rubygems ruby-dev libopenssl-ruby
