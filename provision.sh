@@ -16,6 +16,9 @@ cd /var/lib/gems/1.8/gems/rubygems-update-*
 ruby setup.rb
 gem install bundler
 
+# install git for microwave
+aptitude install -y git-core
+
 # aptitude cleanup
 aptitude clean
 
