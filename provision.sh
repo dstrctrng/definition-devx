@@ -29,6 +29,5 @@ rm -rf /lib/udev/rules.d/75-persistent-net-generator.rules
 rm -f /var/lib/dhcp3/*
 
 # microwave
-cd /vagrant/provision
-bundle check || bundle --local --path vendor/bundle
-bundle exec chef-solo -c "config/solo.rb" -N localhost
+cd /vagrant
+bin/microwave
