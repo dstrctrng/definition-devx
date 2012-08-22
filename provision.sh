@@ -19,8 +19,8 @@ cd $shome
 # load a jason bourne library
 source "$shome/bin/_treadstone"
 
-  # entry point
-  function main {
+# entry point
+function main {
   export DEBIAN_FRONTEND=noninteractive
 
   # update packages
