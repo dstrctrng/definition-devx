@@ -31,8 +31,11 @@ function main {
   aptitude install -y ruby rubygems ruby-dev libopenssl-ruby
 
   gem install rubygems-update
-  cd /var/lib/gems/1.8/gems/rubygems-update-*
+  set +f
+  pushd /var/lib/gems/1.8/gems/rubygems-update-* > /dev/null
+  set -f
   ruby setup.rb
+  popd > dev/null
   gem install bundler
 
   # aptitude cleanup
