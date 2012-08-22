@@ -35,7 +35,7 @@ function main {
   pushd /var/lib/gems/1.8/gems/rubygems-update-* > /dev/null
   set -f
   ruby setup.rb
-  popd > dev/null
+  popd > /dev/null
   gem install bundler
 
   # aptitude cleanup
