@@ -2,6 +2,8 @@
 
 umask 022
 
+cd /vagrant
+
 export DEBIAN_FRONTEND=noninteractive
 
 # update packages
@@ -16,12 +18,8 @@ cd /var/lib/gems/1.8/gems/rubygems-update-*
 ruby setup.rb
 gem install bundler
 
-# install git for microwave
-aptitude install -y git-core
-
 # aptitude cleanup
 aptitude clean
 
 # microwave
-cd /vagrant
 bin/microwave
