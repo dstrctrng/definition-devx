@@ -1,2 +1,6 @@
 /vendor/bundle
 /.bundle
+/cache
+/backup
+/.tmp
+*.orig
