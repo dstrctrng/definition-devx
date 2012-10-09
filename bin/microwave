@@ -17,10 +17,6 @@ source "$shome/bin/_treadstone"
 
 # entry point
 function main {
-  microwave_cook "$@"
-}
-
-function microwave_cook {
   mkdir -p $shome/backup
 
   export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
