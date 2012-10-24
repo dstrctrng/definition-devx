@@ -1,13 +1,11 @@
 #!/bin/bash
 
 #/ NAME
-#/     microwave -- runs chef solo in an alpha_omega release
+#/     local-helper -- resets environment for another bundle exec
 #/
 #/ SYNOPSIS
 #/     
-#/     microwave
-#/     microwave -n node
-#/
+#/     local-helper command args ...
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
@@ -17,17 +15,14 @@ source "$shome/bin/_treadstone"
 
 # entry point
 function main {
-  mkdir -p $shome/backup
+  unset GEM_HOME BUNDLE_GEMFILE RUBYOPT
 
-  export BUNDLE_GEMFILE="$shome/.deploy/Gemfile"
-  unset GEM_HOME RUBYOPT 
   bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
-  exec bundle exec chef-solo -c config/solo.rb -N "$FLAGS_node"
+  exec bundle exec "$@"
 }
 
 # define command line options:
 #   var name, default, description, short option
-DEFINE_string "node" "localhost" "load a specific nodes/*.rb profile" "n"
 
 # parse the command-line
 parse_command_line "$@" || exit $?
