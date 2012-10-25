@@ -15,7 +15,7 @@ shome="/vagrant"
 cd $shome
 
 # load a jason bourne library
-source "$shome/bin/_treadstone"
+source "$shome/libexec/_treadstone"
 
 # entry point
 function main {
