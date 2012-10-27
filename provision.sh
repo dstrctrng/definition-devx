@@ -58,9 +58,6 @@ function main {
       chown -R ${nm_user}:${nm_user} /home/${nm_user}/.ssh/
     done
   fi
-
-  # microwave
-  bin/microwave
 }
 
 # define command line options:
