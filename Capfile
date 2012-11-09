@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'alpha_omega/deploy'
-load 'config/deploy'
 
 # application deploy
 namespace :ubuntu do
@@ -15,13 +14,19 @@ namespace :ubuntu do
   end
 
   task :restart do
-    run "cd #{deploy_to} && (#{ruby_loader} bin/local-helper vagrant up || #{ruby_loader} bin/local-helper vagrant provision)"
+    run "cd #{deploy_to} && #{ruby_loader} bin/restart vagrant"
   end
 
   task :hack do
     run "[[ -d #{deploy_release}/.git ]] || rm -rf #{deploy_release}/log"
     run "[[ -d #{deploy_release}/.git ]] || rmdir #{deploy_release}/cache"
     run "[[ -d #{deploy_release}/.git ]] || rmdir #{deploy_release}/service"
+  end
+end
+
+namespace :deploy do
+  task :bundle do
+    run "cd #{deploy_release} && #{ruby_loader} bin/build ruby"
   end
 end
 
