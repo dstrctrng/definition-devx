@@ -35,9 +35,6 @@ function main {
 
   # aptitude cleanup
   aptitude clean
-
-  # microwave
-  bin/microwave
 }
 
 # pass arguments to entry point
