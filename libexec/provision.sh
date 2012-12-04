@@ -38,26 +38,6 @@ function main {
 
   # aptitude cleanup
   aptitude clean
-
-  # setup ssh keys
-  mkdir -p /root/.ssh
-  chmod 750 /root/.ssh
-  (cat $shome/config/vagrant_keys $shome/.tmp/authorized_keys 2>&- || true) > /root/.ssh/authorized_keys || true
-
-  # create same username as host user
-  local nm_host_user="$(cat $shome/.tmp/whoami 2>&- || true)"
-  if [[ -n "$nm_host_user" ]]; then
-    groupadd $nm_host_user || true
-    useradd -g $nm_host_user -s /bin/bash -m $nm_host_user || true
-
-    local nm_user
-    for nm_user in $nm_host_user; do
-      mkdir -p /home/${nm_user}/.ssh
-      chmod 750 /home/${nm_user}/.ssh
-      rsync -ia /root/.ssh/authorized_keys /home/${nm_user}/.ssh/
-      chown -R ${nm_user}:${nm_user} /home/${nm_user}/.ssh/
-    done
-  fi
 }
 
 # define command line options:
