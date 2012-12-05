@@ -38,6 +38,11 @@ function main {
 
   # aptitude cleanup
   aptitude clean
+
+  # disable eth0 so eth2 can be effective default gateway
+  if ! grep -q 'ID:001' /etc/rc.local; then
+    perl -pe 'm{exit 0} && print "sleep 5 && ifdown eth0 # ID:001\n"' -i /etc/rc.local
+  fi
 }
 
 # define command line options:
