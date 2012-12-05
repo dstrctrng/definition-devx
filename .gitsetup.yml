@@ -2,3 +2,4 @@
 remotes:
   primary: git@github.com:destructuring/definition-basebox
   secondary: git@destructuring.org:destructuring/definition-basebox
+  sh: https://github.com/destructuring/jason
