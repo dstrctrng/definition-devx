@@ -1,6 +1,6 @@
 --- 
-repository: https://github.com/destructuring/definition-osx
-application: osx
+repository: https://github.com/destructuring/definition-devx
+application: devx
 
 ruby_loader: rvm-exec
 app_ruby: default
